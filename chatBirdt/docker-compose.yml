@@ -1,0 +1,46 @@
+version: "3"
+
+
+networks:
+  chat_birdt_network:
+    ipam:
+      config:
+        - subnet: 172.21.0.0/24
+
+services:
+  chat_birdt_ollama:
+    container_name: chat_birdt_ollama
+    image: ollama/ollama
+    networks:
+      chat_birdt_network:
+        ipv4_address: 172.21.0.5
+
+  chat_birdt_backend:
+    container_name: chat_birdt_backend
+    build: llmApi/.
+    networks:
+      chat_birdt_network:
+        ipv4_address: 172.21.0.6
+
+  chat_birdt_frontend:
+    container_name: chat_birdt_frontend
+    build: interface/.
+    ports:
+      - "4200:4200"
+    expose:
+      - "4200"
+    networks:
+      chat_birdt_network:
+        ipv4_address: 172.21.0.7
+
+# az login            ?
+# az --login register ?// user name and key on website
+
+#sudo docker tag chatbirdt_chat_birdt_frontend acrchatbirdt.azurecr.io/chatbirdt_chat_birdt_frontend
+#sudo docker push acrchatbirdt.azurecr.io/chatbirdt_chat_birdt_frontend
+
+#sudo docker tag chatbirdt_chat_birdt_frontend acrchatbirdt.azurecr.io/chatbirdt_chat_birdt_frontend
+#sudo docker push acrchatbirdt.azurecr.io/chatbirdt_chat_birdt_frontend
+
+#sudo docker tag ollama/ollama acrchatbirdt.azurecr.io/ollama/ollama
+#sudo docker push acrchatbirdt.azurecr.io/ollama/ollama

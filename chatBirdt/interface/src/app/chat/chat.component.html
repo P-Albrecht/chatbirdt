@@ -1,0 +1,22 @@
+<div class="grid-container">
+  <div class="grid-item item1" id="item1">
+    <div class="chat-body">
+      <div *ngFor="let element of chat">
+        <div class={{element.type}} id={{element.hasSpace}}>{{element.text}}</div>
+      </div>
+      <div *ngIf="loading" class="load_dots">
+        <div class="load" id="load1"></div>
+        <div class="load" id="load2"></div>
+        <div class="load" id="load3"></div>
+        <div class="load" id="load4"></div>
+        <div class="load" id="load5"></div>
+      </div>
+    </div>
+  </div>
+  <div class="grid-item item2">
+    <textarea class="interaction" rows="5" id="interaction"></textarea>
+  </div>
+  <div class="grid-item item3">
+    <button class="send" (click)="onClickMe()" >Send</button>
+  </div>
+</div>

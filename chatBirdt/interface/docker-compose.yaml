@@ -1,0 +1,23 @@
+version: "3"
+services:
+
+#  ollama:
+#    image: ollama/ollama
+#    ports:
+#      - "11430:11434"
+
+#  backend:
+#    build: langChain/.
+#    network_mode: "host"
+#    ports:
+#      - "5000:5000"
+
+  frontend-test:
+    build: .
+    network_mode: "host"
+    ports:
+      - "4200:4200"
+
+
+
+
