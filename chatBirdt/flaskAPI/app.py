@@ -80,6 +80,24 @@ def chat_document(input_):
     #return jsonify({"data": requests.get('http://172.21.0.5:11434/api/tags').json()})
 
 
+@app.route('/chatDocument2', methods=['GET', 'POST'])
+@cross_origin()
+def chat_document2():
+
+    llm = Ollama(base_url='http://localhost:11434',
+                model="llama2",
+                verbose=True,
+                temperature=0.3,
+                callback_manager=CallbackManager([StreamingStdOutCallbackHandler()]))
+
+    prompt = PromptTemplate(
+        input_variables=["topic"],
+        template="{topic}",
+    )
+    chain = LLMChain(llm=llm, prompt=prompt, verbose=False)
+    return chain.run('name three car brands')
+
+
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(debug=True, host='0.0.0.0', port=port)
