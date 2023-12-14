@@ -11,8 +11,8 @@ WORKDIR /app
 
 RUN pip install --no-cache-dir flask langchain requests argparse tqdm pypdf
 RUN pip install Flask-Cors
-RUN pip install -U sentence-transformers
-RUN pip install chromadb
+#RUN pip install -U sentence-transformers
+#RUN pip install chromadb
 
 RUN pip install pysqlite3-binary
 # Install the langchain package

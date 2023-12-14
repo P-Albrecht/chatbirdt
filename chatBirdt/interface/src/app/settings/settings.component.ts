@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import {LlamaService} from "../llama.service";
+import {ActivatedRoute} from "@angular/router";
+import { Buffer } from 'buffer/';
 
 
 @Component({

@@ -9,7 +9,8 @@ import { map, catchError} from 'rxjs/operators';
 export class LlamaService {
 
   //baseURL: string = "http://chat-birdt-backend:5000/";
-  baseURL: string = "http://172.21.0.6:5000/";
+  //baseURL: string = "http://172.21.0.6:5000/";
+  baseURL: string = "http://localhost:5000/";
   //baseURL: string = "backend/";
 
   constructor(private http: HttpClient) {
